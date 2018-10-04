@@ -4,7 +4,11 @@ def main() :
     gradeLevelNum = int(gradeLev)
     print(yearInSchool(gradeLevelNum))  # prints year in school (the long way)
 
-    classGrades = [99, 90, 99, 90]
+    classGrades = []
+    nums = input("How many classes do you take? ")
+    for i in range(0, int(nums)) :
+        question = int(input("Grade of class " + str(i + 1) + ": "))
+        classGrades.append(question)
     numberOfClassGrades = (len(classGrades))
     print(str(numberOfClassGrades) + " classes")
     numGrade = (getAverageGrade(classGrades)) # puts average grade into a variable
