@@ -4,19 +4,25 @@ def main() :
     gradeLevelNum = int(gradeLev)
     print(yearInSchool(gradeLevelNum))  # prints year in school (the long way)
 
-    classGrades = [92.5, 88.6, 77.2, 99.7]
+    classGrades = [99, 90, 99, 90]
     numberOfClassGrades = (len(classGrades))
-    print(numberOfClassGrades)
-    numGrade = (getAverageGrade(classGrades, numberOfClassGrades))  # puts average grade into a variable
+    print(str(numberOfClassGrades) + " classes")
+    numGrade = (getAverageGrade(classGrades)) # puts average grade into a variable
+    print(numGrade)
 
     letterGrade = (getLetterGrade(numGrade))
     print(letterGrade)  # prints letter grade
 
-    if letterGrade == "A" or "A-" or "B+" or "B" or "B-" or "C+" or "C" or "C-" :
-        print("Congratulations you are passing! ")
+    # if letterGrade == "A" or "A-" or "B+" or "B" or "B-" or "C+" or "C" or "C-" :
+      #  print("Congratulations you are passing! ")
+    # elif letterGrade == "D+" or "D" or "D-" or "F" :
+      #  print("You better get to work - you are failing! ")
+   #  else :
+       # print("You better get to work - you are failing! ")  # prints whether passing/failing based on GPA
+    if letterGrade == 'F' :
+        print("You better get to work - you are failing! ")
     else :
-        print("You better get to work - you are failing! ")  # prints whether passing/failing based on GPA
-
+        print("Congratulations you are passing! ")
 
 
 
@@ -32,9 +38,14 @@ def yearInSchool(level) :
     else :
         return "You aren't in high school! "  # determines grade level and returns it
 
-def getAverageGrade(grades, length1) :
-    added = grades[0] + grades[1] + grades[2] + grades[3]
-    average = (added / length1)
+def getAverageGrade(grades) :
+    newGrades = grades
+    lengthOfList = (float(len(newGrades)))
+    add1 = 0.0
+    for x in newGrades :
+        add1 = float(add1) + int(x)
+    # added = grades[0] + grades[1] + grades[2] + grades[3]
+    average = (float(add1) / int(lengthOfList))
     return float(average)  # calculates average grade
 
 def getLetterGrade(number) :
