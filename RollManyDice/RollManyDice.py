@@ -1,21 +1,44 @@
+import random
+DICE_NUM = 98
+
 def main() :
+
+    # count = count + 1
+    newDiceList = [0] * 6
+    newDiceList = defineDice()
+
+    printSideBySide(newDiceList)
+
     count = 0
-    print(defineDice(count))
     play = "Y"
-    count = count + 1
 
     while(play) :
-        randomNum = random()
-        print("Random number is: " + str(randomNum))
+        randomNum = random1()
+        # print("Random number is: " + str(randomNum))
         print("count = " + str(count))
-        print(defineDice(randomNum))
+
+        anotherDice = [0] * DICE_NUM
+        roll = 0
+
+        for num in range(0,DICE_NUM) :
+            roll = random1()
+            print(str(roll+1) + " rolled", end = "\t")
+
+            anotherDice[num] = newDiceList[roll]
+
+        print()
+        printSideBySide(anotherDice)
+
         count = int(count) + 1
+
         play = input("Play again? Y or N   ") == "Y"
+
 
     print("You've played " + str(count) + " times")
 
 
-def defineDice(number) :  # number = count
+def defineDice() :  # number = count
+    diceList2 = [0] * 6
     topAndBottom = "  ------- "  # making different combinations
     onLeft = " | *     | "
     onRight = " |     * | "
@@ -29,38 +52,37 @@ def defineDice(number) :  # number = count
     diceFive = [topAndBottom, twoStars, middleStar, twoStars, topAndBottom]
     diceSix = [topAndBottom, twoStars, twoStars, twoStars, topAndBottom]
     everyDie = [diceOne, diceTwo, diceThree, diceFour, diceFive, diceSix]
+    diceNewList = []
+    randomNumber = random1()
 
-    for dice in everyDie :
-        for i in dice :
-            print(i)
-    # if number == 0 :
-    #     print(everyDie[0])    # printing each dice
-    #     print(everyDie[1])
-    #     print(everyDie[2])
-    #     print(everyDie[3])
-    #     print(everyDie[4])
-    #     print(everyDie[5])
-    #
-    # if int(number) == 1 :
-    #     return(everyDie[0])
-    # elif int(number) == 2:
-    #     return(everyDie[1])
-    # elif int(number) == 3:
-    #     return(everyDie[2])
-    # elif int(number) == 4:
-    #     return(everyDie[3])
-    # elif int(number) == 5:
-    #     return(everyDie[4])
-    # elif int(number == 6) :
-    #     return(everyDie[5])
-    # else:
-    #     print("")
+    # for dice in everyDie :
+    #     for i in dice :
+    #         print(i)
+
+    for aNum in range(0, 6) :
+        if aNum == 0 :
+            diceList2[aNum] = everyDie[0]
+        elif aNum == 1 :
+            diceList2[aNum] = everyDie[1]
+        elif aNum == 2 :
+            diceList2[aNum] = everyDie[2]
+        elif aNum == 3 :
+            diceList2[aNum] = everyDie[3]
+        elif aNum == 4 :
+            diceList2[aNum] = everyDie[4]
+        elif aNum == 5 :
+            diceList2[aNum] = everyDie[5]
+    return(diceList2)
+
+def printSideBySide(diceNewList) :
+    for row in range(0, len(diceNewList[0])) :
+        for col in range (0, len(diceNewList)) :
+            print(diceNewList[col][row], end = "\t")
+        print()
 
 
-def random() :
-    import random
-    for x in range(7) :
-        anInt = random.randint(1, 6)
+def random1() :
+    anInt = random.randint(0, 5)
     return anInt
 
 main()
