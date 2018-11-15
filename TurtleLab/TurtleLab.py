@@ -1,4 +1,5 @@
 import turtle as t
+import random
 
 pen = t.Pen()
 t.setup(width = 700, height = 700)
@@ -52,9 +53,14 @@ def part2() :
     askColor = input("What color do you want to draw with? (black, red, blue, green)")
     askLength = input("What length do you want the sides to be?")
     askSides = input("How many sides do you want?")
-    if int(askSides) <= 2 :
+    if int(askSides) <= 2 or int(askLength) == 0 :
         print("this doesn't work")
+        return
     angle = 360 / int(askSides)
+    pen.penup()
+    pen.setpos(200, 200)
+    pen.pendown()
+    pen.circle(50, 360)
 
     for x in range(0, int(askSides)) :
         t.color(str(askColor))
@@ -69,24 +75,54 @@ def part3() :
     pen.pendown()
     pen.circle(50, 360)
     pen.penup()
-    pen.setpos(100, -100)
+    pen.setpos(150, -150)
     pen.pendown()
     pen.color("blue")
-    pen.circle(50, 360)
+    for x in range(4):  # square
+        pen.forward(50)
+        pen.left(90)
     pen.penup()
-    pen.setpos(-100, -100)
+    pen.setpos(-150, -150)
     pen.pendown()
     pen.color("green")
-    pen.circle(50, 360)
+    pen.forward(50)
+    pen.left(120)
+    pen.forward(50)
+    pen.left(120)
+    pen.forward(50)
     pen.penup()
-    pen.setpos(-100, 100)
+    pen.setpos(-150, 150)
     pen.pendown()
-    pen.color("yellow")
-    pen.circle(50, 360)
+    pen.color("pink")
+    for x in range(2) :
+        pen.forward(60)
+        pen.left(90)
+        pen.forward(30)
+        pen.left(90)
+
+
+def part4() :
+    pen.speed(20)
+    angle = 10
+    for x in range(int(360/angle)) :
+        pen.pencolor("coral")
+        pen.circle(100)
+        pen.left(angle)
+    for x in range(int(360/angle)) :
+        pen.pencolor("#f442d1")
+        pen.circle(75)
+        pen.left(angle)
+    for x in range(int(360/angle)) :
+        pen.pencolor("#45f9f3")
+        pen.circle(40)
+        pen.left(angle)
+
+
 
 
 # part1()
-part2()
+# part2()
 # part3()
+part4()
 
 t.exitonclick()
